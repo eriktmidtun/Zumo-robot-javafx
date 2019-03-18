@@ -3,8 +3,16 @@
     -fx-background-radius: None;
 }
 
+.btns:hover {
+    -fx-background-color: #6e956e;
+}
+
 .root {
 
+}
+
+.errorLabel {
+    -fx-text-fill: #d05021;
 }
 
 .speedBox {

@@ -2,14 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root" stylesheets="@style.css"  xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="zumo.Controller">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #4d4d4d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,16 +28,36 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="connection" textFill="#4d4d4d" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="ports" textFill="#4d4d4d" wrapText="true">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
-            <Button fx:id="btn_connect" mnemonicParsing="false" onAction="#connect" prefWidth="150.0" styleClass="btns" stylesheets="@style.css" text="Connect" />
-            <Button fx:id="btn_disconnect" disable="true" mnemonicParsing="false" onAction="#disconnect" prefWidth="150.0" styleClass="btns" stylesheets="@style.css" text="Disconnect" />
+            <ChoiceBox fx:id="connectionBox" prefHeight="25.0" prefWidth="190.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ChoiceBox>
+            <HBox prefHeight="50.0" prefWidth="184.0" spacing="5.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Button fx:id="btn_connect" mnemonicParsing="false" onAction="#connect" prefHeight="25.0" prefWidth="118.0" styleClass="btns" stylesheets="@style.css" text="Connect" />
+                        <Button fx:id="btn_disconnect" disable="true" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="118.0" styleClass="btns" stylesheets="@style.css" text="Disconnect" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="btn_refresh" mnemonicParsing="false" onAction="#refreshPorts" prefHeight="61.0" prefWidth="69.0" styleClass="btns" text="Refresh" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <Label fx:id="errorConnect" textFill="#d05021" wrapText="true">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
          </children></VBox>
-      <HBox alignment="CENTER" layoutY="100.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="700.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+      <HBox alignment="CENTER" layoutY="100.0" minWidth="-Infinity" prefHeight="250.0" prefWidth="700.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
@@ -85,6 +106,37 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutY="320.0" prefHeight="280.0" prefWidth="700.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="280.0" prefWidth="211.0" spacing="10.0">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <children>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="220.0" text="Strategies">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="170.0" selected="true" text="Random">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox layoutX="31.0" layoutY="54.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="170.0" text="Search &amp; Destroy">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox layoutX="31.0" layoutY="90.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="170.0" text="Spin">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </CheckBox>
+               </children>
             </VBox>
          </children>
       </HBox>
