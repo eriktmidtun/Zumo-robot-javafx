@@ -5,16 +5,29 @@
 
 .btns:hover {
     -fx-background-color: #6e956e;
+    -fx-cursor: hand;
 }
 
-.root {
-
+.close_btn:hover {
+    -fx-cursor: HAND;
 }
 
-.errorLabel {
-    -fx-text-fill: #d05021;
+.choice-box {
+    -fx-background-radius:0;
+    -fx-background-color: none;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #b4b4b4;
+    -fx-border-radius: 0;
+    -fx-text-fill: red;
+    -fx-prompt-text-fill: red;
+    -fx-cursor: HAND;
+    -fx-arrows-visible: false;
 }
 
+.list-view {
+    -fx-background-color: none;
+
+}
 .speedBox {
     -fx-background-color: #FF5E9C;
     -fx-background-radius: 50%;

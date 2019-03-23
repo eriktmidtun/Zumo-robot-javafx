@@ -4,67 +4,89 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="zumo.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zumo.Controller">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #4d4d4d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_LEFT" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #57606f;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" text="Zumo" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="51.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="511.0">
+               <children>
+                  <Label alignment="CENTER" blendMode="EXCLUSION" text="Zumo" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="51.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="389.0">
+               <children>
+                  <ImageView blendMode="OVERLAY" fitHeight="18.0" fitWidth="18.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" styleClass="close_btn">
+                     <image>
+                        <Image url="@images/cross1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="700.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutX="700.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: #e5e5e5;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Bluetooth" textFill="#4d4d4d" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Serial ports" textFill="#777777" wrapText="true">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="ports" textFill="#4d4d4d" wrapText="true">
-               <font>
-                  <Font name="Arial" size="24.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="connectionBox" prefHeight="25.0" prefWidth="190.0">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="connectionBox" prefHeight="25.0" prefWidth="219.0" styleClass="jfx-choice-box" stylesheets="@style.css">
+               <VBox.margin>
+                  <Insets />
                </VBox.margin>
             </ChoiceBox>
-            <HBox prefHeight="50.0" prefWidth="184.0" spacing="5.0">
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="184.0" spacing="5.0">
                <children>
                   <VBox spacing="5.0">
                      <children>
-                        <Button fx:id="btn_connect" mnemonicParsing="false" onAction="#connect" prefHeight="25.0" prefWidth="118.0" styleClass="btns" stylesheets="@style.css" text="Connect" />
-                        <Button fx:id="btn_disconnect" disable="true" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="118.0" styleClass="btns" stylesheets="@style.css" text="Disconnect" />
+                        <Button fx:id="btn_connect" mnemonicParsing="false" onAction="#connect" prefHeight="25.0" prefWidth="136.0" styleClass="btns" stylesheets="@style.css" text="Connect" textFill="DIMGRAY" />
+                        <Button fx:id="btn_disconnect" disable="true" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="136.0" styleClass="btns" stylesheets="@style.css" text="Disconnect" textFill="DIMGRAY" />
                      </children>
                   </VBox>
-                  <Button fx:id="btn_refresh" mnemonicParsing="false" onAction="#refreshPorts" prefHeight="61.0" prefWidth="69.0" styleClass="btns" text="Refresh" />
+                  <Button fx:id="btn_refresh" mnemonicParsing="false" onMouseClicked="#listSerialPorts" prefHeight="55.0" prefWidth="75.0" styleClass="btns" text="Refresh" textFill="DIMGRAY" />
                </children>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets left="5.0" right="5.0" />
                </padding>
             </HBox>
             <Label fx:id="errorConnect" textFill="#d05021" wrapText="true">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font></Label>
-         </children></VBox>
-      <HBox alignment="TOP_CENTER" layoutY="112.0" prefHeight="186.0" prefWidth="700.0" spacing="20.0">
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding></VBox>
+      <HBox alignment="TOP_CENTER" layoutY="100.0" prefHeight="186.0" prefWidth="650.0" spacing="20.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="280.0" prefWidth="211.0" spacing="10.0">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
                <children>
-                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="220.0" text="Strategies">
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="220.0" text="Strategies" textFill="#777777">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -74,20 +96,20 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <ChoiceBox fx:id="strategyBox" prefHeight="25.0" prefWidth="190.0" />
-                        <Button fx:id="btn_strategy" disable="true" mnemonicParsing="false" onAction="#changeStrategy" prefHeight="25.0" prefWidth="191.0" styleClass="btns" stylesheets="@style.css" text="Change strategy" />
+                        <ChoiceBox fx:id="strategyBox" prefHeight="25.0" prefWidth="190.0" stylesheets="@style.css" />
+                        <Button fx:id="btn_strategy" disable="true" mnemonicParsing="false" onAction="#changeStrategy" prefHeight="25.0" prefWidth="191.0" styleClass="btns" stylesheets="@style.css" text="Change strategy" textFill="DIMGRAY" />
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="186.0" prefWidth="266.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" prefHeight="186.0" prefWidth="266.0" spacing="10.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="199.0" text="Current strategy">
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="199.0" text="Current strategy" textFill="#777777">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="strategyLabel" alignment="CENTER" layoutX="72.0" layoutY="10.0" prefHeight="34.0" prefWidth="184.0" text="- default">
+                  <Label fx:id="strategyLabel" alignment="CENTER" layoutX="72.0" layoutY="10.0" prefHeight="34.0" prefWidth="184.0" text="- default" textFill="#777777">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -96,16 +118,16 @@
             </VBox>
          </children>
          <padding>
-            <Insets top="15.0" />
+            <Insets top="30.0" />
          </padding>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutY="302.0" prefHeight="298.0" prefWidth="700.0" spacing="10.0">
+      <VBox alignment="TOP_CENTER" layoutY="302.0" prefHeight="298.0" prefWidth="650.0" spacing="10.0">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Label text="LOG" />
-            <ListView fx:id="logView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Label text="LOG" textFill="#777777" />
+            <TextArea fx:id="logView" focusTraversable="false" prefHeight="275.0" prefWidth="680.0" />
          </children>
       </VBox>
    </children>
